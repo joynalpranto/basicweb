@@ -1,0 +1,81 @@
+package pageFactory;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class GmailEmailPageFactory {
+	WebDriver driver;
+	
+	@FindBy(id="Email")
+	WebElement emailId;
+	
+	@FindBy(id="next")
+	WebElement nextBTN;
+	
+	@FindBy(id="Passwd")
+	WebElement emailPass;
+	
+	@FindBy(id="signIn")
+	WebElement signInBTN;
+	
+	@FindBy(id=":if")
+	WebElement composeBTN;
+	
+	@FindBy(id=":ma")
+	WebElement receiverID;
+	
+	@FindBy(id=":mq")
+	WebElement emailSub;
+	
+	@FindBy(id=":ln")
+	WebElement emailDescription;
+	
+	@FindBy(id=":n0")
+	WebElement sendBTN;
+	
+	
+	public GmailEmailPageFactory(WebDriver driver){
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+		
+	}
+	
+	public void inputEmailID(String Id){
+		emailId.sendKeys(Id);
+	}
+	
+	public void clicknextBTN(){
+		nextBTN.click();
+	}
+	
+	public void inputEmailPass(String pass){
+		emailPass.sendKeys(pass);
+	}
+	
+	public void clickSignInBTN(){
+		signInBTN.click();
+	}
+	
+	public void clickComposeBTN(){
+		composeBTN.click();
+	}
+	
+	public void inputReceiverEmail(String Id){
+		receiverID.sendKeys(Id);
+	}
+	
+	public void inputEmailSub(String sub){
+		emailSub.sendKeys(sub);
+	}
+	
+	public void emailDescription(String description){
+		emailDescription.sendKeys(description);
+	}
+	
+	public void clickSendBTN(){
+		sendBTN.click();
+	}
+
+}
