@@ -1,0 +1,58 @@
+package basicWeb;
+
+
+
+import java.util.concurrent.TimeUnit;
+
+import pageFactory.GmailEmailPageFactory;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FrameWorkTestCase {
+	
+	private WebDriver driver;
+	private String baseURL;
+	GmailEmailPageFactory gmailPageFactory;
+
+	@Before
+	public void setUp() throws Exception {
+		driver=new FirefoxDriver();
+		baseURL="https://gmail.com";
+		
+		gmailPageFactory= new GmailEmailPageFactory(driver);
+		
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(baseURL);
+				
+	}
+		
+	@Test
+	public void test() {
+		
+		gmailPageFactory.inputEmailID("jpranto2@gmail.com");
+		gmailPageFactory.clicknextBTN();
+		gmailPageFactory.inputEmailPass("joynalpranto666");
+		gmailPageFactory.clickSignInBTN();
+		gmailPageFactory.clickComposeBTN();
+		gmailPageFactory.inputReceiverEmail("faridahmadshiblu@gmail.com");
+		gmailPageFactory.inputEmailSub("Testing Email");
+		gmailPageFactory.emailDescription("Hi this is a test email");
+		gmailPageFactory.clickSendBTN();
+		
+		
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		
+	}
+
+	
+
+}
